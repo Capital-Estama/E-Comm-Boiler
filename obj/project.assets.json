@@ -907,11 +907,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\wes02\\Documents\\Dojo\\C#\\C-Sharp-Boiler\\C-Sharp-Boiler.csproj",
+      "projectUniqueName": "C:\\Users\\wes02\\Documents\\Dojo\\C#\\E-Comm-Boiler\\C-Sharp-Boiler.csproj",
       "projectName": "C-Sharp-Boiler",
-      "projectPath": "C:\\Users\\wes02\\Documents\\Dojo\\C#\\C-Sharp-Boiler\\C-Sharp-Boiler.csproj",
+      "projectPath": "C:\\Users\\wes02\\Documents\\Dojo\\C#\\E-Comm-Boiler\\C-Sharp-Boiler.csproj",
       "packagesPath": "C:\\Users\\wes02\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\wes02\\Documents\\Dojo\\C#\\C-Sharp-Boiler\\obj\\",
+      "outputPath": "C:\\Users\\wes02\\Documents\\Dojo\\C#\\E-Comm-Boiler\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\wes02\\AppData\\Roaming\\NuGet\\NuGet.Config",
