@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "DmZzzduK6mtZeDlx6E9uUFqzq9lHDWDxhl9NWKXtwzt94Ysoa062wodS4CObYL+DGqEZAASgQCCrUiMEZ/M/wg==",
+  "dgSpecHash": "67md9YRiWHMA/1+g+tJC48fEMTKYwy18cyz0kMRIJBNlgtu0TDph6WYwaHc2fBa+St1JvXSuXOP86ubyHseXIA==",
   "success": true,
-  "projectFilePath": "C:\\Users\\wes02\\Documents\\Dojo\\C#\\C-Sharp-Boiler\\C-Sharp-Boiler.csproj",
+  "projectFilePath": "C:\\Users\\wes02\\Documents\\Dojo\\C#\\E-Comm-Boiler\\C-Sharp-Boiler.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\wes02\\.nuget\\packages\\microsoft.bcl.asyncinterfaces\\1.1.1\\microsoft.bcl.asyncinterfaces.1.1.1.nupkg.sha512",
     "C:\\Users\\wes02\\.nuget\\packages\\microsoft.bcl.hashcode\\1.1.0\\microsoft.bcl.hashcode.1.1.0.nupkg.sha512",

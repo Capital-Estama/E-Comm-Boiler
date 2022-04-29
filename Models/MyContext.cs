@@ -8,5 +8,7 @@ namespace C_Sharp_Boiler.Models
 
             // ADD DB SETS HERE
             public DbSet<User> Users {get; set;}
+            public DbSet<Product> Products {get; set;}
+            public DbSet<Order> Orders {get; set;}
     }
 }
