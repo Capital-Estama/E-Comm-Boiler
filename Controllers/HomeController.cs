@@ -8,6 +8,8 @@ using Microsoft.Extensions.Logging;
 using C_Sharp_Boiler.Models;
 //added access to session
 using Microsoft.AspNetCore.Http;
+//  for password hasing 
+using Microsoft.AspNetCore.Identity;
 
 namespace C_Sharp_Boiler.Controllers
 {
@@ -25,6 +27,7 @@ namespace C_Sharp_Boiler.Controllers
 
         public IActionResult Index()
         {
+            
             return View();
         }
 
@@ -33,7 +36,23 @@ namespace C_Sharp_Boiler.Controllers
         {
             if(ModelState.IsValid)
             {
+                if(_context.Users.Any(a => a.Email == newUser.Email))
+                {
+                    ModelState.AddModelError("Email", "Email already in use!");
+                    return View("Index");
+                }
+                if(_context.Users.Any(a => a.Username == newUser.Username))
+                {
+                    ModelState.AddModelError("Username", "Username already in use!");
+                    return View("Index");
+                }
+                // hash password before sending to database
+                PasswordHasher<User> Hasher = new PasswordHasher<User>();
+                newUser.Password = Hasher.HashPassword(newUser, newUser.Password);
+                _context.Users.Add(newUser);
+                _context.SaveChanges();
                 //setup session
+                HttpContext.Session.SetInt32("Userid", newUser.UserID);
                 return RedirectToAction("Dashboard");
 
             } else {
@@ -47,7 +66,22 @@ namespace C_Sharp_Boiler.Controllers
         {
             if(ModelState.IsValid)
             {
+                // go find user
+                User userInDB = _context.Users.FirstOrDefault(a => a.Email == loggedIn.LogEmail);
+                if(userInDB == null)
+                {
+                    ModelState.AddModelError("LogEmail", "Invaild login attepmt");
+                    return View("Index");
+                }
+                var hasher = new PasswordHasher<LoginUser>();
+                var result = hasher.VerifyHashedPassword(loggedIn, userInDB.Password, loggedIn.LoginPassword);
+                if(result == 0)
+                {
+                    ModelState.AddModelError("LogEmail", "Invaild login attepmt");
+                    return View("Index");
+                }
                 //setup session
+                HttpContext.Session.SetInt32("UserId", userInDB.UserID);
                 return RedirectToAction("Dashboard");
 
             } else {
@@ -60,6 +94,11 @@ namespace C_Sharp_Boiler.Controllers
         public IActionResult Dashboard()
         {
             //setup session
+            if(HttpContext.Session.GetInt32("Userid") == null)
+            {
+                return RedirectToAction("Index");
+            }
+            ViewBag.loggedIn = _context.Users.FirstOrDefault( a => a.UserID == HttpContext.Session.GetInt32("UserId"));
             return View();
         }
 
